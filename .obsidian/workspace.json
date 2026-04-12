@@ -1,0 +1,423 @@
+{
+  "main": {
+    "id": "1eed900710af7ba2",
+    "type": "split",
+    "children": [
+      {
+        "id": "aee3d89c54239c80",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7f78a9803c7d3a35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40_sources/courses/Java Threads Basics.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Java Threads Basics"
+            }
+          },
+          {
+            "id": "b9a53ef0ce3c3f60",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.10.6"
+            }
+          },
+          {
+            "id": "e4c44816d18baaab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40_sources/courses/Java Threads Demystified.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Java Threads Demystified"
+            }
+          },
+          {
+            "id": "a0783601955e8706",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40_sources/courses/Microservices Collaboration.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Microservices Collaboration"
+            }
+          },
+          {
+            "id": "7b8b74c52373d8cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10_projects/Aidexa/23900.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "23900"
+            }
+          },
+          {
+            "id": "343a45b731e8b98a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40_sources/articles/infoq_enterprise-spec-driven-development.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "infoq_enterprise-spec-driven-development"
+            }
+          },
+          {
+            "id": "46ec1566ba95d396",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40_sources/wiki/concepts/java-concurrency.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "java-concurrency"
+            }
+          },
+          {
+            "id": "9c68cdea4b30b2e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_inbox/2026-03-16.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-03-16"
+            }
+          },
+          {
+            "id": "88782ac8cfa2f838",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40_sources/courses/Microservices Fundamental.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Microservices Fundamental"
+            }
+          },
+          {
+            "id": "cee435d6c4ecb7c6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_inbox/2026-03-24.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-03-24"
+            }
+          },
+          {
+            "id": "26ec82eda893e8d4",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.12.7"
+            }
+          },
+          {
+            "id": "d0168aa4339b2a1a",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2026-03-19 14.48.54.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-03-19 14.48.54.excalidraw"
+            }
+          },
+          {
+            "id": "ecc797850e77d92a",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2026-03-19 14.48.54.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-03-19 14.48.54.excalidraw"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e37d6d6218101093",
+    "type": "split",
+    "children": [
+      {
+        "id": "b0fe43dc63ddb5a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6c5a0efecff6f628",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b1a71e504f2c4038",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "vercel_agent-responsibly",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "60cb71bc580521af",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 386.5
+  },
+  "right": {
+    "id": "548a9e2fe08ad946",
+    "type": "split",
+    "children": [
+      {
+        "id": "32395ecefe47aa79",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4ca784e8429d5c98",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "00_inbox/2025-07-31.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 2025-07-31"
+            }
+          },
+          {
+            "id": "916daff9548a743a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "00_inbox/2025-07-31.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 2025-07-31"
+            }
+          },
+          {
+            "id": "c08c4cc2b6e434c8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "5706e4a413c1f32a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "40_sources/courses/Rust in motion.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Rust in motion"
+            }
+          },
+          {
+            "id": "06fe338724559e4d",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "SpacedRepIcon",
+              "title": "Notes Review Queue"
+            }
+          },
+          {
+            "id": "e0ac1950fcb22f76",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "6bd6c50860674dd8",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "trident-custom",
+              "title": "Mermaid Toolbar"
+            }
+          },
+          {
+            "id": "fb1a27a4fdcd308a",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 368.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-spaced-repetition:Review flashcards": false,
+      "templater-obsidian:Templater": false,
+      "mermaid-tools:Open Mermaid Toolbar": false
+    }
+  },
+  "active": "06fe338724559e4d",
+  "lastOpenFiles": [
+    "40_sources/articles/devoxx_modern-java-playful-way.md",
+    "40_sources/wiki/concepts/domain-event.md",
+    "40_sources/wiki/concepts/bounded-context.md",
+    "40_sources/wiki/concepts/agentic-patterns.md",
+    "40_sources/articles/infoq_enterprise-spec-driven-development.md",
+    "40_sources/articles/infoq_software-evolution-microservices-genai.md",
+    "Untitled.md",
+    "40_sources/articles/infoq_secure-connectivity-api-calm.md",
+    "10_projects/Aidexa/calcolo spese istruttoria.md",
+    "10_projects/Aidexa/spese istruttoria.md",
+    "10_projects/Aidexa/credit-risk.md",
+    "10_projects/Aidexa/smallcorporate.md",
+    "00_inbox/2026-04-10.md",
+    "40_sources/wiki/lacune-identificate.md",
+    "40_sources/memory/MEMORY.md",
+    "40_sources/memory/project_wiki_build.md",
+    "40_sources/memory",
+    "40_sources/wiki/log.md",
+    "40_sources/wiki/concepts/information-hiding.md",
+    "40_sources/wiki/synthesis/microservizi-java-aggregazione.md",
+    "40_sources/wiki/technologies/keycloak.md",
+    "40_sources/wiki/technologies/kubernetes.md",
+    "40_sources/courses/Kotlin and Spring.md",
+    "40_sources/wiki/index.md",
+    "40_sources/wiki/concepts/aggregate.md",
+    "Excalidraw/Drawing 2026-03-16 09.40.34.excalidraw.md",
+    "50_resources/templates/notes.md",
+    "40_sources/wiki/technologies",
+    "40_sources/wiki/synthesis",
+    "40_sources/wiki/patterns",
+    "40_sources/wiki/concepts",
+    "40_sources/wiki",
+    "40_sources/articles",
+    "Alto Livello getFundingProposal-2026-04-09-105426.svg",
+    "10_projects/Aidexa/getFundingProposal-sequence.mmd",
+    "Untitled diagram-2026-04-09-104348.svg",
+    "30_concepts/networking",
+    "30_concepts/AWS",
+    "_- visual selection.svg",
+    "Pasted image 20260323170328.png",
+    "Screenshot 2025-09-22 at 11.37.37.png"
+  ]
+}
