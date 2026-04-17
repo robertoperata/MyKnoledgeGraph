@@ -105,7 +105,43 @@ the nat gateway is deployed on the subnet and if the subnet goes down you lose t
 Nat Gateways are AZ-resiliant service, need ! NAT Gateway in each AZ
 Managed by AWS, supports 5 Gbps of bandwidth and automatically scales up to 100Gbps
 
+![[AWS VPC Network Overview.excalidraw|10000]]
 
+## Setup NAT Gateway — Ordine operativo
+
+Per permettere a una risorsa in una subnet privata di accedere a internet tramite NAT Gateway, i passi da seguire in ordine sono:
+
+### 1. Creare la VPC
+- Definire il CIDR block (es. `10.0.0.0/16`)
+
+### 2. Creare le subnet
+- **Subnet pubblica** (es. `10.0.1.0/24`) — dove vivrà il NAT Gateway
+- **Subnet privata** (es. `10.0.2.0/24`) — dove vive la risorsa che vuole accedere a internet
+
+### 3. Creare e attaccare un Internet Gateway (IGW)
+- Creare l'IGW
+- Attaccarlo alla VPC (1 IGW per VPC)
+
+### 4. Creare la route table per la subnet pubblica
+- Aggiungere la route di default: `0.0.0.0/0 → Internet Gateway`
+- Associare questa route table alla **subnet pubblica**
+
+### 5. Allocare un Elastic IP
+- Il NAT Gateway richiede un IP pubblico statico (Elastic IP)
+
+### 6. Creare il NAT Gateway
+- Deployarlo nella **subnet pubblica** (non in quella privata)
+- Associargli l'Elastic IP
+
+### 7. Creare la route table per la subnet privata
+- Aggiungere la route di default: `0.0.0.0/0 → NAT Gateway`
+- Associare questa route table alla **subnet privata**
+
+### 8. Deployare la risorsa nella subnet privata
+- La risorsa riceve solo un IP privato
+- Il traffico outbound percorre: `risorsa → router VPC → NAT Gateway → IGW → internet`
+
+> **Punto critico:** il NAT Gateway va nella subnet **pubblica**, non in quella privata. La subnet privata lo raggiunge tramite la route table. Se la subnet pubblica cade, perdi anche il NAT Gateway.
 
 ## Argomenti mancanti
 

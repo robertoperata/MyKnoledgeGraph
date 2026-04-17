@@ -1,9 +1,9 @@
 ---
-tags: 
-feature: 
-type: 
-author: 
-source: 
+tags:
+feature:
+type:
+author:
+source:
 ---
 # NAT Gateway
 
