@@ -7,10 +7,13 @@ sources:
   - "[[AI Talks - Lada Kesseler Augmented Coding]]"
   - "[[Claude Code and Large-Context Reasoning]]"
   - "[[tessl_context-development-lifecycle]]"
-updated: 2026-04-09
+updated: 2026-04-17
 related:
   - "[[concepts/context-management]]"
   - "[[concepts/architectural-governance]]"
+  - "[[concepts/harness-engineering]]"
+  - "[[concepts/spec-driven-development]]"
+  - "[[concepts/autonomous-systems-architecture]]"
 ---
 
 # Agentic Patterns
@@ -69,8 +72,25 @@ La context window non è FIFO: i LLM mantengono più strettamente il materiale i
 
 Implicazione pratica: le istruzioni critiche (`CLAUDE.md`, system prompt) vanno all'inizio; i dettagli rilevanti al task corrente vanno verso la fine della conversazione.
 
+## Multi-Agent Architecture (Spotify Ads)
+
+Pattern da Spotify per sistemi multi-agent:
+
+**Tool Grounding**: i modelli LLM hanno accesso strutturato a dati reali tramite function calling — gli agenti ragionano su *cosa* fare, i tool forniscono i *fatti*. Previene le allucinazioni.
+
+**Separazione intent/esecuzione**: gli agenti interpretano l'intenzione di business e orchestrano dinamicamente le chiamate — coerenza su superfici diverse (UI, Salesforce, Slack) senza duplicare la logica.
+
+**Prompt engineering come software engineering**: i prompt sono versioned, testati e iterati con la stessa disciplina del codice. Piccole variazioni di formulazione impattano significativamente la consistenza dell'output.
+
+**Regola per i confini degli agenti**: un agente per skill distinta o sorgente di dati. Troppi agenti → overhead di coordinazione; troppo pochi → prompt monolitici.
+
+Risultati Spotify: tempo creazione media plan 15-30min → 5-10sec; 20+ campi di form → 1-3 messaggi in linguaggio naturale.
+
 ## Connessioni
 
 - [[concepts/context-management]] — la gestione del contesto è il tema centrale dell'era agentica
-- [[concepts/architectural-governance]] — governance dichiarativa applicabile anche agli agenti (executable guardrails ↔ Architecture.md come manifesto eseguibile)
+- [[concepts/architectural-governance]] — governance dichiarativa applicabile anche agli agenti
+- [[concepts/harness-engineering]] — i sistemi intorno agli agenti per garantire la qualità del codice generato
+- [[concepts/spec-driven-development]] — SDD come paradigma per governare i coding agent
+- [[concepts/autonomous-systems-architecture]] — architettura dei confini per sistemi multi-agent autonomi
 - [[technologies/kubernetes]] — deployment sicuro con canary release è infrastruttura K8s

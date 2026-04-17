@@ -1,5 +1,42 @@
 # Wiki Log
 
+## 2026-04-17 — Ingestione batch articoli
+
+**Operazione:** Ingestione di 14 nuovi articoli da `40_sources/articles/`.
+
+**Sorgenti processate:** 14 articles
+- 5 Dear Architects (async workflows, harness engineering, multi-agent Spotify, PostgreSQL treadmill, autonomous systems)
+- 1 Devoxx (Modern Java 21-25)
+- 8 InfoQ (S3 Vectors, SDD enterprise, multi-cloud EDA, Netflix graph, CALM, software evolution, SDD, uForwarder)
+
+**Nuove pagine create:** 10
+- `concepts/structured-concurrency.md`
+- `concepts/spec-driven-development.md`
+- `concepts/harness-engineering.md`
+- `concepts/legacy-modernization.md`
+- `concepts/async-workflow-patterns.md`
+- `concepts/autonomous-systems-architecture.md`
+- `patterns/multi-cloud-event-driven.md`
+- `patterns/kafka-consumer-proxy.md`
+- `technologies/calm.md`
+- `technologies/vector-databases.md`
+
+**Pagine aggiornate:** 3
+- `concepts/agentic-patterns.md` — aggiunto: multi-agent (Spotify), tool grounding, connessioni a harness/SDD/autonomous
+- `concepts/virtual-threads.md` — aggiunto: Stream Gatherers mapConcurrent, link a structured-concurrency
+- `technologies/kafka.md` — aggiunto: consumer proxy pattern (uForwarder), ottimizzazione multi-cloud
+
+**Connessioni trasversali notevoli:**
+- Thread 4 (AI) si consolida: SDD ↔ Harness Engineering ↔ Autonomous Systems formano un cluster coeso
+- Thread 2 (Java): Structured Concurrency completa il trittico virtual-threads + completable-future + SC
+- Thread 1 ↔ Thread 3: Multi-cloud EDA crea il primo ponte solido tra architettura distribuita e cloud
+
+**Tensioni identificate:**
+- PostgreSQL: l'ottimizzazione ha un tetto architetturale — nessuna ottimizzazione risolve l'MVCC overhead per dati append-only
+- SDD vs governance tradizionale: le spec ereditano la stessa complessità del codice che dovrebbero semplificare
+
+---
+
 ## 2026-04-09 — Build iniziale
 
 **Operazione:** Ingestione completa di tutte le sorgenti disponibili e costruzione della wiki.

@@ -4,7 +4,9 @@ type: technology
 tags: [thread1-microservices]
 sources:
   - "[[microservizi_pattern_summary]]"
-updated: 2026-04-09
+  - "[[infoq_uber-uforwarder-kafka-push-proxy]]"
+  - "[[infoq_multi-cloud-event-driven-architectures]]"
+updated: 2026-04-17
 related:
   - "[[patterns/event-driven]]"
   - "[[patterns/cqrs-read-model]]"
@@ -65,9 +67,26 @@ Il file `The Essential Learning Foundations.md` contiene una domanda interessant
 
 Questo è un aspetto avanzato della Kafka Streams topology che non è coperto in dettaglio dalle sorgenti disponibili. **Lacuna identificata**: Kafka Streams e KTable non sono coperti dalla knowledge base.
 
+## Consumer Proxy Pattern (uForwarder, Uber)
+
+A scala (1.000+ consumer, trilioni di messaggi/giorno), i consumer group tradizionali hanno limitazioni strutturali. Il **Consumer Proxy** centralizza offset management, retry, dead letter queue e backpressure, esponendo un'interfaccia gRPC ai servizi consumer.
+
+Vedi [[patterns/kafka-consumer-proxy]] per il dettaglio.
+
+## Ottimizzazione Multi-Cloud
+
+Per deployment Kafka cross-cloud, la configurazione del producer impatta significativamente la latenza:
+- Compressione Snappy riduce la banda
+- Batching con LingerMs: -40-60% di latenza inter-cloud
+- Partitioning per account per ordinamento intrinseco
+
+Vedi [[patterns/multi-cloud-event-driven]] per il framework completo.
+
 ## Connessioni
 
 - [[patterns/event-driven]] — Kafka è il broker più comune per l'event-driven
 - [[patterns/cqrs-read-model]] — Kafka trasporta gli eventi che alimentano i read models
 - [[patterns/request-reply-correlation-id]] — Kafka per request/response async con correlation ID
+- [[patterns/kafka-consumer-proxy]] — pattern per centralizzare la logica consumer a scala
+- [[patterns/multi-cloud-event-driven]] — Kafka ottimizzato per deployment cross-cloud
 - [[concepts/domain-event]] — Kafka come transport per i domain events

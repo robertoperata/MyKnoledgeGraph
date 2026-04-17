@@ -6,10 +6,12 @@ sources:
   - "[[Java Threads Basics]]"
   - "[[Java Threads Demystified]]"
   - "[[microservizi_pattern_summary]]"
-updated: 2026-04-09
+  - "[[devoxx_modern-java-playful-way]]"
+updated: 2026-04-17
 related:
   - "[[concepts/java-concurrency]]"
   - "[[concepts/completable-future]]"
+  - "[[concepts/structured-concurrency]]"
   - "[[patterns/request-reply-correlation-id]]"
 ---
 
@@ -76,8 +78,23 @@ Il blog post sui microservizi (microservizi_pattern_summary) mostra come abilita
 
 > **Tensione:** I virtual thread non sono la soluzione per tutto. Per workload CPU-intensive (calcolo, stream paralleli), i platform thread e il Fork/Join framework sono ancora la scelta corretta.
 
+## Stream Gatherers con mapConcurrent (Java 24)
+
+```java
+// Evitare: parallelStream rischia di esaurire il common ForkJoinPool
+results = queries.parallelStream().map(this::performSearch).collect(toList());
+
+// Preferire: mapConcurrent usa virtual thread internamente
+results = queries.stream()
+    .gather(Gatherers.mapConcurrent(5, this::performSearch))
+    .collect(toList());
+```
+
+`mapConcurrent` usa virtual thread internamente: sicuro in produzione, nessun rischio di esaurire il ForkJoinPool.
+
 ## Connessioni
 
 - [[concepts/java-concurrency]] — i virtual thread sono un'evoluzione del modello di threading Java
 - [[concepts/completable-future]] — usato insieme ai virtual thread nel pattern Request-Reply
+- [[concepts/structured-concurrency]] — la Structured Concurrency usa virtual thread per i subtask
 - [[patterns/request-reply-correlation-id]] — virtual thread abilitano alta concorrenza con codice sincrono semplice
