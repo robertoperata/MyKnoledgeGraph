@@ -107,7 +107,7 @@ Managed by AWS, supports 5 Gbps of bandwidth and automatically scales up to 100G
 
 ![[AWS VPC Network Overview.excalidraw|10000]]
 
-## Setup NAT Gateway — Ordine operativo
+## Setup [[NAT Gateway]] — Ordine operativo
 
 Per permettere a una risorsa in una subnet privata di accedere a internet tramite NAT Gateway, i passi da seguire in ordine sono:
 
@@ -143,9 +143,83 @@ Per permettere a una risorsa in una subnet privata di accedere a internet tramit
 
 > **Punto critico:** il NAT Gateway va nella subnet **pubblica**, non in quella privata. La subnet privata lo raggiunge tramite la route table. Se la subnet pubblica cade, perdi anche il NAT Gateway.
 
+## DNS 
+Device private IPs will automatically be assigned a DNS entry
+
+AWS DNS server can be accessed on the second IP of the VCP CIDR block as well - 169.254.169.253
+
+enableDnsHostNames: Determines whether the VPC supports assigning public DNS hostnames to instances with public IP address
+
+enableDNSSupport : Determines whether the VPC supports DNS resolution through the Amazon provided DNS server
+
+## Elastic IP
+public ip are not static and if a EC2 instance goes down then it will get another IP
+elastic IP are static IPv4 address that do not change
+to use an ElasticIP you first allocate one to your account and then associate it with your instance or a network interface
+Elastic IP are region specific
+
+## Security Group and NACLs
+Firewalls monitor traffic and only allow traffic permitted by a set of predefined rules
+Firewalls rules are broken down into inbound and outbound rules
+Stateless firewalls need to be configured both inbound and outbound
+Stateful firewalls are intelligent enough to understand which request and response are part of the same connection. if a request is permitted the response is automatically permitted as well in a stateful firewall.
+### Network Access Control List (Firewall of AWS)
+NACLs filter traffic entering and leaving a subnet.
+NACLs do not filter traffic within a subnet.
+NACLs are stateless firewall so rules must be set for both inbound and outbound traffic
+Allow or deny traffic
+Every subnet in a VPC must be associated with a NACL.
+You can associate multiple subnet to a single NACL but a subnet can only be associated to a NACL
+### Security Groups
+Security Groups act as firewalls for individual resources
+Security Group are stateful so only request needs to be allowed
+Only allow traffic
+multiple security group are merged into one
+
+## Load Balancer
+- classic load balancer
+	- able to handle only one SSL certificates
+- application load balancer
+	- support HTTP/HTTPS/WebSockets
+	- function at the application layer (level 7)
+	- forward requests based off of:
+		- URL path conditions
+		- Host domain
+		- HTTP field - header, method, query, IP
+		- support HTTP redirects and custom HTTP response
+	- perform application-specific health checks
+- network load balancer
+	- laod balance traffic based on TCP/UDP (layer 4)
+	- meant for applications that don't use HTTP/HTTPS
+	- faster than Application load balancers
+	- health checks are only basic ICMP/TCP connection
+	- NLB forwards TCP connection to instances
+![[Drawing 2026-04-25 11.23.08.excalidraw|1200px]]
+### Cross-zone load Balancing
+allow load-balancer nodes to balance through different AZ
+
+## VPN Architecture in AWS
+
+**VPN Gateway** terminates VPN on the AWS side.
+**Customer Gateway** terminates VPN on the Customer side
+
+## Direct Connect
+Directly links on-premises with AWS without internet routing like VPN
+Offers greater throughput and a more secure, stable connection than VPN over the internet
+cross connect is a connection between a port on AWS router and customer router
+pricing:
+- port hours
+- outbound data transfer
+
+## VPC Peering
+Network connection between two VPCs that routes traffic between them
+VPC Peering connects VPCs in the same/different regions and AWS accounts
+No charge for creating a VPC Peering, data transfer that crosses AZ is chargeable
+ 
+
+
 ## Argomenti mancanti
 
-- [[NAT Gateway]] / NAT Instance
 - [[VPC Peering]]
 - [[VPC Endpoints]] (Gateway e Interface)
 - [[AWS PrivateLink]]

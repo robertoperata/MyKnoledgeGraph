@@ -1,5 +1,32 @@
 # Wiki Log
 
+## 2026-05-03 — Ingestione corsi AWS Networking (Thread 3)
+
+**Operazione:** Ingestione di 2 nuovi corsi + aggiornamento KodeKloud AWS.
+
+**Sorgenti processate:**
+- `courses/hands-on-with-aws-vpcs/knowledge.md` — Rick Crisci, 6h, VPC completo Giorno 1+2
+- `courses/aws-security-deep-dive-vpcs/knowledge.md` — Rick Crisci, 4h, VPC security + DDoS
+- `courses/KodeKloud AWS Solutions Architect Associate Certification.md` — aggiornamento (le lacune "Argomenti mancanti" ora coperte dai nuovi corsi)
+
+**Nuove pagine create:** 4
+- `concepts/aws-vpc-fundamentals.md`
+- `concepts/aws-security-groups-nacls.md`
+- `concepts/aws-vpc-connectivity.md`
+- `concepts/aws-ddos-protection.md`
+
+**Connessioni trasversali notevoli:**
+- Thread 3 si consolida: 3 corsi sullo stesso argomento si integrano senza contraddizioni
+- `aws-vpc-connectivity` ↔ `technologies/kubernetes` — cluster EKS usano subnet VPC, Transit Gateway per multi-account
+- `aws-ddos-protection` ↔ `concepts/aws-security-groups-nacls` — SG è l'ultimo layer nella chain defense in depth
+- VPC Gateway Endpoint (gratuito per S3) → elimina costi egress + sicurezza
+- **Tensione resuelta:** KodeKloud aveva "Argomenti mancanti" (VPC Endpoints, Transit Gateway, Direct Connect, VPN, Flow Logs) — tutti coperti dai nuovi corsi
+- **Concetto nuovo**: Micro-segmentation (SG per istanza) vs subnet-level NACL — rilevante anche per Kubernetes NetworkPolicy
+
+**Anki deck target:** `AWS Solution Architect Associate Certification` (regola prioritaria Thread 3)
+
+---
+
 ## 2026-04-17 — Ingestione batch articoli
 
 **Operazione:** Ingestione di 14 nuovi articoli da `40_sources/articles/`.

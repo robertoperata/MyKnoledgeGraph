@@ -20,6 +20,13 @@
 - [[concepts/garbage-collection]] — GC tuning: safepoints, TLAB, G1, ZGC [thread2]
 - [[concepts/structured-concurrency]] — Structured Concurrency: unità di lavoro concorrente con ciclo di vita garantito (Java 21+) [thread2]
 
+### Thread 3 — Cloud e infrastruttura AWS
+
+- [[concepts/aws-vpc-fundamentals]] — VPC, subnet, route table, IGW, NAT Gateway [thread3, aws]
+- [[concepts/aws-security-groups-nacls]] — SG (stateful, allow-only) vs NACL (stateless, allow+deny), micro-segmentation [thread3, aws]
+- [[concepts/aws-vpc-connectivity]] — VPC Peering, Transit Gateway, Direct Connect, VPN, VPC Endpoints, data transfer charges [thread3, aws]
+- [[concepts/aws-ddos-protection]] — Shield, WAF, CloudFront, Route 53, defense in depth, auto scaling anti-DDoS [thread3, aws]
+
 ### Thread 4 — AI e agenti
 - [[concepts/agentic-patterns]] — Pattern per l'uso efficace di agenti AI nel coding [thread4]
 - [[concepts/context-management]] — CDLC: contesto come codice da versionare e testare [thread4]
@@ -97,7 +104,9 @@
 - `courses/Java next Steps Streams Collectors.md` — Streams e Collectors (solo PDF allegato)
 - `courses/Refactoring to Functional Programming in Java.md` — Refactoring funzionale (Victor Rentea, note sparse)
 - `courses/Domain-Driven Design Aggregates Domain Events and Value Objects.md` — DDD tattico (Vaughn Vernon, note sparse)
-- `courses/KodeKloud AWS Solutions Architect Associate Certification.md` — VPC, subnet, NAT, routing AWS
+- `courses/KodeKloud AWS Solutions Architect Associate Certification.md` — VPC, subnet, NAT, routing AWS *(aggiornato 2026-05-03)*
+- `courses/hands-on-with-aws-vpcs/knowledge.md` — VPC completo: peering, Transit Gateway, ELB, Direct Connect, VPN, VPC Endpoints, Flow Logs, IaC
+- `courses/aws-security-deep-dive-vpcs/knowledge.md` — VPC security: SG vs NACL, bastion host, WAF, Shield, CloudFront, DDoS mitigation
 - `courses/Certified Kubernetes Application Developer.md` — K8s networking, Services, NetworkPolicy, Istio
 - `courses/DevOps Pre-Requisite Course.md` — Networking Linux: ip link, ip addr, routing
 - `courses/AI Talks - Lada Kesseler Augmented Coding.md` — Pattern per augmented coding con AI
@@ -139,6 +148,6 @@ Vedi [[lacune-identificate]] per il dettaglio completo.
 ---
 
 ## Statistiche
-- Totale pagine wiki: 36 (17 concepts, 7 patterns, 6 technologies, 1 synthesis, 1 index, 1 log, 1 lacune)
-- Sorgenti ingested: 46 (22 articles + 21 courses + 3 blog posts)
-- Ultimo aggiornamento: 2026-04-17
+- Totale pagine wiki: 40 (21 concepts, 7 patterns, 6 technologies, 1 synthesis, 1 index, 1 log, 1 lacune)
+- Sorgenti ingested: 48 (22 articles + 23 courses + 3 blog posts)
+- Ultimo aggiornamento: 2026-05-03

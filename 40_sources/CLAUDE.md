@@ -132,6 +132,53 @@ Se due sorgenti suggeriscono approcci diversi allo stesso problema, documentalo 
 
 **Step 6 — Aggiorna `wiki/index.md` e appendi a `wiki/log.md`**
 
+**Step 7 — Genera flashcard Anki**
+
+### 7a — Consulta il manifest `wiki/anki-sync.md`
+
+Leggi `wiki/anki-sync.md`. Per ogni pagina wiki coinvolta in questo ingest, determina lo stato:
+
+| Stato | Condizione | Azione |
+|---|---|---|
+| **Nuovo** | Pagina non presente nel manifest | Crea card → aggiungi al manifest |
+| **Aggiornamento minore** | Pagina nel manifest, modifiche di link o formattazione | Nessuna card nuova, aggiorna data nel manifest |
+| **Aggiornamento sostanziale** | Pagina nel manifest, nuovo contenuto concettuale aggiunto | Crea card per i nuovi concetti → aggiorna manifest |
+| **Revisione profonda** | Pagina nel manifest, il significato di un concetto esistente è cambiato | **Stampa a schermo** il riepilogo (vedi sotto) → NON creare card automaticamente |
+
+**Formato stampa a schermo per revisioni profonde:**
+```
+⚠️  REVISIONE ANKI MANUALE RICHIESTA
+Pagina wiki: concepts/nome-concetto.md
+Tag Anki: wiki::nome-concetto
+Motivo: [descrizione del cambiamento sostanziale]
+Vecchio contenuto sintetico: [cosa diceva prima]
+Nuovo contenuto sintetico: [cosa dice ora]
+Azione suggerita: aggiorna manualmente in Anki le card con tag wiki::nome-concetto
+```
+
+### 7b — Routing per deck
+
+**Regola prioritaria:** se il concetto appartiene al thread **Cloud e infrastruttura AWS** (Thread 3, sorgente `KodeKloud AWS Solutions Architect Associate Certification` o articoli con tag `aws`), le card vanno in `AWS Solution Architect Associate Certification` invece dei deck `TechWiki::*`.
+
+| Tipo pagina wiki | Deck target (default) | Deck target (AWS) | Card da creare |
+|---|---|---|---|
+| `concepts/` | `TechWiki::Concepts` | `AWS Solution Architect Associate Certification` | 1. Definizione del concetto; 2. Quando usarlo vs. alternative; 3. Trade-off principali |
+| `patterns/` | `TechWiki::Patterns` | `AWS Solution Architect Associate Certification` | 1. Problema → Soluzione (fronte/retro); 2. Trade-off |
+| `synthesis/` | `TechWiki::Synthesis` | `AWS Solution Architect Associate Certification` | 1. Domanda trasversale → risposta sintetica |
+
+### 7c — Linee guida card
+
+- Il **fronte** deve essere una domanda specifica ("Come funziona l'Out-of-Order Commit Tracker di uForwarder?" non "uForwarder")
+- Il **retro** max 3-4 punti bullet, non paragrafi
+- Tag obbligatori su ogni card: `wiki` + `wiki::<nome-file-slug>` + `thread::<nome-thread>`
+- Il tag `wiki::<slug>` è l'identificatore che collega la card alla pagina wiki — usare sempre il nome file senza estensione, kebab-case
+
+### 7d — Aggiorna `wiki/anki-sync.md`
+
+Dopo aver creato le card, aggiorna il manifest con data e numero di card create/aggiornate.
+
+Se Anki non è raggiungibile, stampa a schermo l'elenco completo delle card che andrebbero create (fronte + retro) così possono essere aggiunte in seguito.
+
 ---
 
 ## Workflow: QUERY
@@ -148,6 +195,59 @@ Query particolarmente utili da eseguire periodicamente:
 - "Quali concetti appaiono in più thread tematici?"
 - "Dove si sovrappongono architettura distribuita e Java ecosystem?"
 - "Quali pattern DDD si applicano al Thread 1 microservizi?"
+
+---
+
+## Workflow: SYNTHESIS MINING
+
+**Trigger:** "Trova candidati synthesis" oppure eseguito automaticamente al termine di ogni INGEST
+
+**Obiettivo:** generare domande di synthesis che l'utente non saprebbe formulare da solo, partendo dai segnali strutturali della wiki.
+
+**Step 1 — Leggi le synthesis già esistenti**
+Leggi tutti i file in `wiki/synthesis/`. Estrai le domande già trattate. Queste sono **escluse** dai candidati: non proporre domande già presenti né varianti troppo simili.
+
+**Step 2 — Cerca segnali strutturali di synthesis**
+
+Scansiona la wiki cercando:
+
+| Segnale | Come trovarlo | Esempio |
+|---|---|---|
+| **Intersezione di thread** | Pagine con 2+ tag `thread::` diversi | `virtual-threads` ha thread2-java + thread1-microservices |
+| **Link condivisi** | Due o più pagine che puntano alle stesse pagine nella sezione `related` | `cqrs-read-model` e `request-reply` puntano entrambi a `kafka` e `domain-event` |
+| **Tensioni documentate** | Sezioni `> **Tensione:**` nel testo | Tensione CQRS vs Request-Reply in `cqrs-read-model.md` |
+| **Concetti opposti** | Pattern o concetti che risolvono lo stesso problema in modo diverso | Orchestration vs Choreography nella Saga |
+
+**Step 3 — Formula le domande candidate**
+
+Per ogni segnale trovato, formula una domanda specifica e contestualizzata (non generica). La domanda deve:
+- Richiedere di aggregare almeno 2 pagine wiki per essere risposta
+- Avere una risposta pratica, non solo teorica ("quando uso X invece di Y?", "come si combinano X e Y in un sistema reale?")
+- Non essere già coperta da una synthesis esistente
+
+**Step 4 — Presenta i candidati**
+
+Stampa a schermo nel formato:
+
+```
+SYNTHESIS CANDIDATES — YYYY-MM-DD
+(escluse N synthesis già presenti in wiki/synthesis/)
+
+1. [thread::X × thread::Y]
+   Domanda: "..."
+   Pagine coinvolte: page1, page2, page3
+   Segnale: [tipo di segnale che l'ha generata]
+
+2. [tensione documentata]
+   Domanda: "..."
+   ...
+```
+
+Attendi conferma dell'utente su quali candidati elaborare prima di procedere con la scrittura.
+
+**Step 5 — Su conferma: genera la synthesis**
+
+Per i candidati approvati, esegui il workflow QUERY completo e archivia il risultato in `wiki/synthesis/`. Poi esegui lo Step 7 (Anki) per la nuova pagina.
 
 ---
 
