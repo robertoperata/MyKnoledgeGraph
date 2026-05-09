@@ -2,10 +2,11 @@
 tags:
   - algorithms
   - graph
-feature:
-type:
+  - data-structures
+feature: 
+type: course
 author: "[[Matthew Singer]]"
-source:
+source: 
 ---
 # Graph Data Structures and Algorithms from Scratch
 

@@ -1,14 +1,18 @@
 ---
 title: CQRS + Read Model
 type: pattern
-tags: [thread1-microservices, thread5-ddd]
+tags:
+  - thread1-microservices
+  - thread5-ddd
 sources:
   - "[[microservizi_pattern_summary]]"
-updated: 2026-04-09
+  - "[[chris_richardson_not-just-events-async-microservices-goto2019]]"
+updated: 2026-05-07
 related:
   - "[[concepts/domain-event]]"
   - "[[patterns/event-driven]]"
   - "[[technologies/kafka]]"
+  - "[[patterns/transactional-outbox]]"
 ---
 
 # CQRS + Read Model
@@ -93,9 +97,31 @@ public void onOrderEvent(OrderEvent event) {
 >
 > La scelta dipende da: quanto devono essere freschi i dati, quanto può aspettare il chiamante. In sistemi reali coesistono: CQRS per i dati letti frequentemente, Request-Reply per i pochi dati che devono essere freschi al momento della computazione.
 
+## API Composition come alternativa semplice
+
+Per query semplici, un **API Composer** (es. API Gateway) invoca i servizi coinvolti e assembla i risultati in memoria (sincrono o async). Funziona bene per join su dataset piccoli.
+
+**Limiti**: query complesse (es. "clienti recenti con ordini > $X già spediti") richiedono join tra dataset potenzialmente grandi → inefficiente o impossibile con API Composition.
+
+## I view store sono eliminabili e ricostruibili
+
+> "The views in CQRS are disposable. They're replicas. If you need to change the schema, just throw them away and rebuild from scratch." — Chris Richardson
+
+Il view store può usare il database più adatto al pattern di query:
+- MongoDB per documenti JSON
+- Elasticsearch per full-text search
+- Neo4j per grafi
+- Redis per cache ad alta performance
+
+## Replication Lag (trade-off principale)
+
+C'è un ritardo (tipicamente decine di ms) tra l'aggiornamento del command side e il view side. Un client che aggiorna e poi subito rilegge potrebbe ottenere dati vecchi. Soluzione lato UI: aggiornare il modello client-side ottimisticamente dopo una command request riuscita.
+
 ## Connessioni
 
 - [[concepts/domain-event]] — i domain events alimentano il projector del read model
 - [[patterns/event-driven]] — il read model è costruito tramite event-driven architecture
 - [[technologies/kafka]] — il broker che trasporta gli eventi dal write side al read side
 - [[patterns/api-composition-bff]] — il BFF avanzato usa un read model locale invece delle chiamate REST
+- [[patterns/transactional-outbox]] — gli eventi che alimentano il read model vengono pubblicati affidabilmente tramite outbox
+- [[concepts/dual-write-model]] — pattern complementare: scrive sia nell'event log che nello stato corrente nella stessa operazione; è il meccanismo di sincronizzazione intra-servizio che alimenta il read side del CQRS

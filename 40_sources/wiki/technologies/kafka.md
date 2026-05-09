@@ -6,7 +6,8 @@ sources:
   - "[[microservizi_pattern_summary]]"
   - "[[infoq_uber-uforwarder-kafka-push-proxy]]"
   - "[[infoq_multi-cloud-event-driven-architectures]]"
-updated: 2026-04-17
+  - "[[getkafkanated_kip-881-kip-392-inter-az-kafka-costs]]"
+updated: 2026-05-08
 related:
   - "[[patterns/event-driven]]"
   - "[[patterns/cqrs-read-model]]"
@@ -82,6 +83,55 @@ Per deployment Kafka cross-cloud, la configurazione del producer impatta signifi
 
 Vedi [[patterns/multi-cloud-event-driven]] per il framework completo.
 
+## Ottimizzazione costi inter-AZ (KIP-392 + KIP-881)
+
+Il traffico dati tra availability zone è la **componente di costo dominante** di un cluster Kafka su cloud. Con il comportamento di default su un cluster a 3 AZ:
+- ~2/3 delle fetch dei consumer finisce su broker in zone diverse
+- Tutto il traffico di replicazione attraversa zone (= 2× il traffico producer con RF=3)
+
+**Esempio concreto:** 10 MB/s write + 5× fanout → **$36.9k/anno** su AWS, di cui $20.5k solo i consumer read.
+
+### KIP-392 — Fetch From Follower (Kafka 2.4+)
+
+Permette ai consumer di leggere dai follower nella propria AZ invece che sempre dal leader. Sicuro perché i dati sotto l'*high watermark* sono già replicati su tutti i follower ISR.
+
+```properties
+# Consumer (e Connect Worker, MirrorMaker2)
+client.rack=eu-west-1a
+
+# Broker
+replica.selector.class=org.apache.kafka.common.replica.RackAwareReplicaSelector
+broker.rack=eu-west-1a  # già spesso configurato
+```
+
+### KIP-881 — Rack-Aware Partition Assignment (Kafka 3.5+)
+
+Risolve due problemi che KIP-392 non affronta:
+1. **Sbilanciamento broker**: se i follower non sono distribuiti uniformemente, fetch-from-follower può sovraccaricare alcuni broker
+2. **RF < numero AZ**: con 5 AZ e RF=3, le AZ 4-5 non hanno repliche locali → KIP-881 assegna ai consumer solo partizioni con replica nella propria AZ
+
+Supporto per protocollo consumer group:
+- **v1 (classic)**: assignor di default gestiscono rack come criterio secondario ✅
+- **v2 (KIP-848)**: non ancora supportato; tracciato in KAFKA-19387 ❌
+
+### ⚠️ Gotcha AWS: IP pubblici
+
+Traffico nella stessa AZ con **IP pubblici IPv4** viene fatturato come cross-zona. Per risparmiare davvero: usare IP privati (same VPC, VPC peering, o Private Link).
+
+**Risparmio atteso:** ~50% del costo del cluster su workload con fanout elevato.
+
+## Kafka NON è un event store
+
+> "Kafka is not an event store, despite claims to the contrary." — Chris Richardson
+
+Kafka è eccellente come message broker ma **non** permette di recuperare eventi per ID (requisito fondamentale di un event store per l'Event Sourcing). Per l'Event Sourcing servono store specializzati (EventStoreDB, eventuate.io) che permettono di caricare la sequenza di eventi di un aggregate per ID.
+
+## Transactional Outbox con Kafka
+
+Il [[patterns/transactional-outbox]] è la fondazione per pubblicare affidabilmente su Kafka. Due approcci:
+- Transaction Log Tailing: Debezium legge il WAL di Postgres/MySQL binlog e pubblica su Kafka → zero latency
+- Polling Publisher: query `SELECT FROM outbox WHERE published=false` → semplice ma con overhead
+
 ## Connessioni
 
 - [[patterns/event-driven]] — Kafka è il broker più comune per l'event-driven
@@ -90,3 +140,4 @@ Vedi [[patterns/multi-cloud-event-driven]] per il framework completo.
 - [[patterns/kafka-consumer-proxy]] — pattern per centralizzare la logica consumer a scala
 - [[patterns/multi-cloud-event-driven]] — Kafka ottimizzato per deployment cross-cloud
 - [[concepts/domain-event]] — Kafka come transport per i domain events
+- [[patterns/transactional-outbox]] — fondazione per la pubblicazione affidabile su Kafka

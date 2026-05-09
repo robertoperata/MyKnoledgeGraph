@@ -1,8 +1,12 @@
 ---
-tags: 
+tags:
+  - aws
+  - solutions-architect
+  - cloud
+  - certification
 feature: 
-type: 
-author: 
+type: course
+author: KodeKloud
 source: 
 ---
 
@@ -217,6 +221,24 @@ VPC Peering connects VPCs in the same/different regions and AWS accounts
 No charge for creating a VPC Peering, data transfer that crosses AZ is chargeable
  
 
+## Transit Gateway
+- simplify networking between VPCs and On-Premise environments
+- allow for transitive routing
+- must specify one subnet for each AZ to be used by the transit gateway to route traffic
+- can peer with other Transit Gateways in different regions or AWS accounts
+## Privatelink
+- allows resources in our VPC to connect to services as if they are were in the same VPC
+- used to connect to public AWS services (S3, CloudWatch) or to other VPCs in AWS
+- VPC endpoints facilitate communication between  VPC instances and services
+## CloudFront
+- delivers content via a worldwide network of data centers called edge location
+- helps get content close to customers
+- origin is the content source for CloudFront edge locations
+- Distribution is a unit of configuration for Cloudfront
+- CloudFront distributions get a default domain name http://xyz.cloudfront.net
+- TTL value decided content validity before an edge location requests the origin
+- Default TTL is 24 hours
+- Cache invalidation - invalidates objects at edge location before their TTL expires
 
 ## Argomenti mancanti
 

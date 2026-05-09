@@ -1,9 +1,13 @@
 ---
 tags:
-feature:
-type:
+  - kubernetes
+  - ckad
+  - k8s
+  - devops
+feature: 
+type: course
 author: "[[Sander van Vugt]]"
-source:
+source: 
 ---
 # Certified Kubernetes Application Developer
 

@@ -1,7 +1,11 @@
 ---
-tags: 
+tags:
+  - concurrency
+  - java
+  - threads
+  - parallelism
 feature: 
-type: 
+type: course
 author: 
 source: 
 ---

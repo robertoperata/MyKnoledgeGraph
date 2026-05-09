@@ -14,9 +14,11 @@ related:
 
 # Structured Concurrency
 
+> **Stato Java 25:** ancora in **5ª preview**. Non è diventata finale. Attesa per Java 29 (prossima LTS).
+
 ## Definizione
 
-La Structured Concurrency (preview da Java 21, revisionata in Java 25) è un modello di programmazione concorrente che tratta un insieme di task concorrenti come una singola unità di lavoro. I task figli non possono sopravvivere al loro scope padre: quando lo scope termina (normalmente o per errore), tutti i subtask vengono cancellati automaticamente.
+La Structured Concurrency (preview da Java 21, 5ª preview in Java 25) è un modello di programmazione concorrente che tratta un insieme di task concorrenti come una singola unità di lavoro. I task figli non possono sopravvivere al loro scope padre: quando lo scope termina (normalmente o per errore), tutti i subtask vengono cancellati automaticamente.
 
 ## Motivazione
 

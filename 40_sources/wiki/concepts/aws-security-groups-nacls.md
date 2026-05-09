@@ -2,9 +2,14 @@
 title: AWS Security Groups e Network ACLs
 type: concept
 tags: [thread3, aws]
-sources: [[courses/KodeKloud AWS Solutions Architect Associate Certification]], [[courses/hands-on-with-aws-vpcs/knowledge]], [[courses/aws-security-deep-dive-vpcs/knowledge]]
+sources: 
+-  "[[courses/KodeKloud AWS Solutions Architect Associate Certification]]"
+- "[[courses/hands-on-with-aws-vpcs/knowledge]]"
+- "[[courses/aws-security-deep-dive-vpcs/knowledge]]"
 updated: 2026-05-03
-related: [[concepts/aws-vpc-fundamentals]], [[concepts/aws-ddos-protection]]
+related: 
+- "[[concepts/aws-vpc-fundamentals]]"
+- "[[concepts/aws-ddos-protection]]"
 ---
 
 # AWS Security Groups e Network ACLs

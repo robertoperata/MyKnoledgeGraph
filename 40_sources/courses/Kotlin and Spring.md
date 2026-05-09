@@ -1,10 +1,11 @@
 ---
 tags:
   - kotlin
-feature:
-type:
+  - spring
+feature: 
+type: live event
 author: "[[Ken Kousen]]"
-source:
+source: 
 ---
 # Kotlin and Spring
 

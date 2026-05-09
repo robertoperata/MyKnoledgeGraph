@@ -75,3 +75,5 @@ L'AI (es. Claude Code) può generare documentazione e sequence diagram di codeba
 - [[concepts/bounded-context]] — guida la decomposizione del monolite in servizi
 - [[patterns/event-driven]] — event streaming come alternativa a ETL per il reporting
 - [[patterns/cqrs-read-model]] — pattern per gestire la proiezione dei dati dopo la decomposizione
+- [[patterns/anti-corruption-layer]] — abilitatore chiave dello Strangler Fig: permette al nuovo sistema di coesistere col legacy senza adottarne il modello durante le fasi intermedie di migrazione
+- [[patterns/modular-monolith]] — step intermedio naturale nello spettro prima di estrarre servizi: i moduli già ben delimitati rendono l'estrazione con Strangler Fig un'operazione chirurgica invece di un rewrite

@@ -1,3 +1,13 @@
+---
+tags:
+  - java
+  - threads
+  - concurrency
+feature: 
+type: course
+author: 
+source: 
+---
 # Java Threads Basics
 
 ## 1. Foundations

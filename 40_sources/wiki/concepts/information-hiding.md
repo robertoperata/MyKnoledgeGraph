@@ -43,3 +43,4 @@ Una conseguenza diretta dell'information hiding è avere **schema espliciti** (O
 - [[concepts/independent-deployability]] — l'information hiding è il meccanismo che rende possibile l'independent deployability
 - [[concepts/bounded-context]] — la boundary del bounded context è il confine dello hiding
 - [[concepts/architectural-governance]] — l'architettura dichiarativa (InfoQ) segue lo stesso principio: le decisioni che cambiano spesso sono distillate in dichiarazioni esplicite e stabili
+- [[patterns/modular-monolith]] — la distinzione tra API pubblica e implementazione privata del modulo è information hiding applicato a livello intra-applicazione; dipendenze solo sulle API, mai sulle implementazioni

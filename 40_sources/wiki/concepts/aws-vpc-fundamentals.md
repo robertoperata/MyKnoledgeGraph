@@ -2,9 +2,16 @@
 title: AWS VPC — Fondamentali
 type: concept
 tags: [thread3, aws]
-sources: [[courses/KodeKloud AWS Solutions Architect Associate Certification]], [[courses/hands-on-with-aws-vpcs/knowledge]], [[courses/aws-security-deep-dive-vpcs/knowledge]]
+sources: 
+  - "[[courses/KodeKloud AWS Solutions Architect Associate Certification]]"
+  - "[[courses/hands-on-with-aws-vpcs/knowledge]]"
+  - "[[courses/aws-security-deep-dive-vpcs/knowledge]]"
 updated: 2026-05-03
-related: [[concepts/aws-security-groups-nacls]], [[concepts/aws-vpc-connectivity]], [[concepts/twelve-factor]], [[technologies/kubernetes]]
+related: 
+  - "[[concepts/aws-security-groups-nacls]]"
+  - "[[concepts/aws-vpc-connectivity]]"
+  - "[[concepts/twelve-factor]]"
+  - "[[technologies/kubernetes]]"
 ---
 
 # AWS VPC — Fondamentali

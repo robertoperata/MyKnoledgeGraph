@@ -71,8 +71,32 @@ Sam Newman (Microservices Collaboration) distingue chiaramente:
 - **[[patterns/saga-pattern]]**: le saga usano eventi per coordinare transazioni distribuite
 - **[[patterns/request-reply-correlation-id]]**: event-driven applicato al pattern request/response (via Kafka) per evitare il temporal coupling
 
+## Event-driven monolith come step intermedio
+
+L'event-driven non richiede necessariamente servizi separati. Un **event-driven monolith** (es. Revolut 2016-2017) ha moduli interni disaccoppiati tramite eventi ma rimane un unico deployment. Vantaggi:
+- Elimina le dipendenze cicliche tra service class (service spaghetti)
+- Prepara la codebase alla separazione in servizi: i moduli sono già isolati
+- Mantiene la semplicità operativa del monolite
+
+È lo step naturale prima di separare i moduli in servizi indipendenti. Vedere anche [[patterns/modular-monolith]].
+
+## Queue vs Event Stream
+
+Distinzione importante spesso confusa (Sookocheff):
+
+| Aspetto | Coda | Event Stream |
+|---|---|---|
+| Consumer | Singolo per messaggio | Multipli (tutti ricevono tutti gli eventi) |
+| Replay | No | Sì (log durevole) — a differenza del pub-sub classico |
+| Ownership | Consumer locale | Infrastruttura condivisa |
+| Uso ideale | Load leveling, task queue | Fan-out, event sourcing, CEP |
+
+La coda appartiene al **servizio consumatore** (non è un bus globale): questo evita single point of failure e permette backpressure indipendente per ogni servizio.
+
 ## Connessioni
 
 - [[concepts/domain-event]] — gli eventi di dominio sono l'unità fondamentale dell'event-driven
 - [[technologies/kafka]] — message broker spesso usato per l'event-driven in ambienti microservizi
 - [[concepts/independent-deployability]] — l'event-driven favorisce il disaccoppiamento necessario per i deploy indipendenti
+- [[concepts/sync-async-hybrid-architecture]] — principio di usare REST ai confini e async internamente; le code e gli event stream hanno ruoli distinti
+- [[concepts/dual-write-model]] — pattern che combina event log (per event-driven) e stato corrente (per query veloci) nella stessa operazione di write

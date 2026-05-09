@@ -1,9 +1,11 @@
 ---
 tags:
-feature:
-type:
-author:
-source:
+  - rust
+  - programming
+feature: 
+type: course
+author: 
+source: 
 ---
 # Rust in motion
 

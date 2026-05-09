@@ -1,10 +1,12 @@
 ---
 tags:
   - math
-feature:
-type:
+  - machine-learning
+  - linear-algebra
+feature: 
+type: course
 author: "[[Jon Krohn]]"
-source:
+source: 
 ---
 # The Essential Learning Foundations
 

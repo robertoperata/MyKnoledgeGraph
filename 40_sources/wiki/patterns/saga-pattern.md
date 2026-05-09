@@ -1,15 +1,19 @@
 ---
 title: Saga Pattern
 type: pattern
-tags: [thread1-microservices, thread5-ddd]
+tags:
+  - thread1-microservices
+  - thread5-ddd
 sources:
   - "[[Microservices Collaboration]]"
   - "[[microservizi_pattern_summary]]"
-updated: 2026-04-09
+  - "[[chris_richardson_not-just-events-async-microservices-goto2019]]"
+updated: 2026-05-07
 related:
   - "[[concepts/domain-event]]"
   - "[[patterns/event-driven]]"
   - "[[concepts/aggregate]]"
+  - "[[patterns/transactional-outbox]]"
 ---
 
 # Saga Pattern
@@ -75,9 +79,38 @@ Le saga hanno **bassa scalabilità** rispetto ad altri pattern (compensating tra
 - Un singolo aggregate nel servizio (se i dati sono locali)
 - Eventual consistency senza compensazione
 
+## Proprietà ACD (non ACID)
+
+Le Saga sono **ACD**, non ACID — manca la proprietà di **Isolation**. Passi di saga diverse possono eseguirsi in interleave, aprendo ad anomalie come *lost updates* e *fuzzy reads*. Soluzioni: **countermeasures** come il **semantic lock** (mantenere l'entità in stato intermedio esplicito, es. PENDING, finché la saga non si completa).
+
+## Requisiti del message broker per le Saga
+
+1. **At-least-once delivery** — il broker riprova se il consumer è temporaneamente down
+2. **Ordered delivery** — i messaggi per la stessa entità devono arrivare in ordine (Kafka: stesso partition key)
+3. **Scalabilità con ordering** — es. Kafka consumer groups per scalare mantenendo l'ordinamento
+
+## Saga vs workflow BPM
+
+> "A Saga is not a long-running business process that lasts hours or days. It should complete in tens of milliseconds. If you're using a BPM engine to describe your Sagas, you're probably doing it wrong." — Chris Richardson
+
+La Saga è un meccanismo tecnico per coordinare transazioni locali atomiche, non un workflow business di lunga durata.
+
+## Dettaglio orchestration: Saga come state machine persistente
+
+Nell'orchestration, il `CreateOrderSaga` è un **oggetto persistente** nel database (state machine). Il ciclo è:
+1. Carica la Saga dal DB
+2. Riceve il reply → transizione di stato
+3. Determina il prossimo partecipante da invocare
+4. Invia command message
+5. Salva la Saga nel DB
+6. Riparte dal punto 1
+
+Questo garantisce che la Saga sopravviva ai crash del servizio.
+
 ## Connessioni
 
 - [[concepts/aggregate]] — ogni passo della saga è una transazione locale su un aggregate
 - [[concepts/domain-event]] — la choreography saga si basa sui domain events
 - [[patterns/event-driven]] — il substrate su cui operano le saga a choreography
 - [[patterns/cqrs-read-model]] — spesso usato per il "read side" in sistemi che usano saga per il write side
+- [[patterns/transactional-outbox]] — fondazione tecnica per garantire l'invio atomico dei messaggi in ogni passo della saga

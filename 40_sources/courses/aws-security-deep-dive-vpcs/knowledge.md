@@ -16,6 +16,10 @@ tags:
   - ddos
   - waf
   - direct-connect
+feature: 
+type: live event
+author: Rick Crisci
+source: 
 ---
 
 # AWS Security Deep Dive: VPCs, Networking, and DDoS Mitigation

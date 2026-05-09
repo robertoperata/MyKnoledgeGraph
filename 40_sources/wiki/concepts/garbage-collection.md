@@ -4,7 +4,8 @@ type: concept
 tags: [thread2-java]
 sources:
   - "[[Java GC Tuning]]"
-updated: 2026-04-09
+  - "[[youtube_java-25-lts-features-jchampions]]"
+updated: 2026-05-08
 related:
   - "[[concepts/java-concurrency]]"
   - "[[concepts/java-memory-model]]"
@@ -72,6 +73,40 @@ I concurrent collector (G1, ZGC, Shenandoah) devono sincronizzarsi con i thread 
 - **Read Barrier**: usato in ZGC/Shenandoah per gestire oggetti che vengono spostati concurrently (colored pointers, load barriers)
 
 Costo: le barrier aumentano la latenza media (p50, p80) pur riducendo le pause worst-case.
+
+## Novità Java 25: Compact Object Headers ⭐
+
+Riduzione della rappresentazione in memoria degli oggetti nel heap:
+- **Risparmio stimato: ~25% del heap** (dipende dalle dimensioni degli oggetti)
+- Zero modifiche al codice applicativo — miglioramento automatico
+- Particolarmente impattante per applicazioni con molti oggetti piccoli
+
+> "Finding a way to remove 25% of the heap after 25 years — just this could be a reason to move to Java 25." — Ario
+
+## Stato collectors in Java 25
+
+| Collector | Modalità generazionale | Note Java 25 |
+|---|---|---|
+| **G1** | Sempre generazionale | Default; miglioramenti continui |
+| **ZGC** | ✅ Generazionale (default) | La modalità non-generazionale è stata **rimossa** perché inferiore |
+| **Shenandoah** | ✅ Generazionale (disponibile) | Ora supporta la modalità generazionale |
+| **Serial / Parallel** | Generazionale | Invariati |
+
+Il ZGC generazionale è così superiore che il team ha rimosso la versione non-generazionale — non c'era motivo di mantenerla.
+
+## AOT (Ahead-of-Time) Compilation Caching — Java 25
+
+Il JIT (C1/C2) può **cachare le ottimizzazioni** tra una run e l'altra, eliminando il warm-up:
+
+```bash
+# Run con AOT caching (registra e usa il profilo)
+java -XX:AOTMode=on -XX:AOTConfiguration=app.aotconf MyApp
+# ~3× più veloce alla seconda esecuzione
+```
+
+In Java 25 non è più necessario un step separato di profiling. Il JVM salva automaticamente il profilo AOT durante la prima esecuzione e lo usa in quelle successive come baseline di ottimizzazione.
+
+**Limitazioni attuali:** profilo CPU-specific; CI/CD integration non ancora standardizzata.
 
 ## Implicazione per l'architettura
 

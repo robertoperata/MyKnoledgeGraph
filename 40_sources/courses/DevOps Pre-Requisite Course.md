@@ -1,8 +1,12 @@
 ---
-tags: 
+tags:
+  - devops
+  - networking
+  - linux
+  - kubernetes
 feature: 
-type: 
-author: 
+type: course
+author: KodeKloud
 source: 
 ---
 # DevOps Pre-Requisite Course

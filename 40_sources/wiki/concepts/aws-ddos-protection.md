@@ -2,9 +2,14 @@
 title: AWS DDoS Protection e Security Architecture
 type: concept
 tags: [thread3, aws]
-sources: [[courses/hands-on-with-aws-vpcs/knowledge]], [[courses/aws-security-deep-dive-vpcs/knowledge]]
+sources: 
+  - "[[courses/hands-on-with-aws-vpcs/knowledge]]"
+  - "[[courses/aws-security-deep-dive-vpcs/knowledge]]"
 updated: 2026-05-03
-related: [[concepts/aws-vpc-fundamentals]], [[concepts/aws-security-groups-nacls], [[concepts/aws-vpc-connectivity]]
+related:
+  - "[[concepts/aws-vpc-fundamentals]]"
+  - "[[concepts/aws-security-groups-nacls]"
+  - "[[concepts/aws-vpc-connectivity]]"
 ---
 
 # AWS DDoS Protection e Security Architecture

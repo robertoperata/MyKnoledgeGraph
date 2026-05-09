@@ -80,8 +80,15 @@ BFF
 
 Il BFF tende ad accumulare logica di dominio nel tempo. Serve disciplina: il BFF orchestra, non decide. La logica di business deve rimanere nei servizi di dominio.
 
+## Il BFF come confine REST del sistema
+
+Il BFF non è solo un aggregatore: è il **punto di stabilità verso l'esterno** nell'architettura ibrida sync/async. Mentre internamente i microservizi comunicano in modo asincrono, il BFF espone un'API REST stabile e ben documentata verso client e sistemi terzi.
+
+Varianti possibili per lo stesso sistema: BFF browser, BFF mobile, BFF third-party — ognuno adatta il contratto REST alle esigenze del proprio consumer senza modificare i servizi di dominio.
+
 ## Connessioni
 
 - [[concepts/completable-future]] — implementazione Java dell'aggregazione parallela
 - [[patterns/cqrs-read-model]] — variante avanzata con read model locale nel BFF
 - [[concepts/independent-deployability]] — il BFF è un servizio separato deployabile indipendentemente
+- [[concepts/sync-async-hybrid-architecture]] — il BFF è il layer REST ai confini del sistema; internamente usa comunicazione asincrona verso i microservizi

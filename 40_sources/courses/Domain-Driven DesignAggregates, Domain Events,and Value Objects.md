@@ -2,10 +2,10 @@
 tags:
   - architecture
   - ddd
-feature:
-type:
+feature: 
+type: live event
 author: "[[Vaughn Vernon]]"
-source:
+source: 
 ---
 # Domain-Driven Design Aggregates, Domain Events,and Value Objects
 

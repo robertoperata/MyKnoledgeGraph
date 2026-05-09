@@ -2,10 +2,10 @@
 tags:
   - threads
   - java
-feature:
-type:
-author: Murice Naftalin
-source:
+feature: 
+type: course
+author: Maurice Naftalin
+source: 
 ---
 # Java Threads Demystified
 https://github.com/MauriceNaftalin/demystifying-threads

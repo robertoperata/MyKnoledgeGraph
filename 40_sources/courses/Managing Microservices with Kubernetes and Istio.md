@@ -2,10 +2,12 @@
 tags:
   - k8s
   - istio
-feature:
-type:
+  - kubernetes
+  - microservices
+feature: 
+type: course
 author: "[[Sander van Vugt]]"
-source:
+source: 
 ---
 # Managing Microservices with Kubernetes and Istio
 - understanding Microservices

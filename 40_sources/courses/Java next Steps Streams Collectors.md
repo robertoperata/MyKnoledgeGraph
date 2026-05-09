@@ -1,9 +1,13 @@
 ---
 tags:
-feature:
-type:
-author:
-source:
+  - java
+  - streams
+  - collectors
+  - functional-programming
+feature: 
+type: course
+author: 
+source: 
 ---
 # Java next Steps: Streams Collectors!
 

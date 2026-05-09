@@ -1,15 +1,21 @@
 ---
 title: Kubernetes
 type: technology
-tags: [thread3-cloud]
+tags:
+  - thread3-cloud
+  - thread1-microservices
 sources:
   - "[[Certified Kubernetes Application Developer]]"
   - "[[Managing Microservices with Kubernetes and Istio]]"
-updated: 2026-04-09
+  - "[[chris_richardson_microservices-platforms-part-4-infrastructure-services-platform]]"
+  - "[[chris_richardson_microservices-platforms-part-7-deployment-platform]]"
+updated: 2026-05-07
 related:
   - "[[concepts/twelve-factor]]"
   - "[[technologies/istio]]"
   - "[[concepts/independent-deployability]]"
+  - "[[concepts/microservices-platform]]"
+  - "[[technologies/gitops]]"
 ---
 
 # Kubernetes
@@ -90,8 +96,18 @@ Istio si aggiunge sopra il networking Kubernetes per:
 | Concurrency | HorizontalPodAutoscaler |
 | Logs | Raccolta stdout via Fluentd/ELK |
 
+## Kubernetes nella Microservices Platform (Richardson)
+
+Nel framework delle [[concepts/microservices-platform]], Kubernetes è al centro di due layer:
+
+**Infrastructure Services Platform**: orchestrazione container con template standardizzati (Helm chart, Kustomize overlay). I team applicativi fanno deploy senza conoscere i dettagli di networking. Kubernetes come infrastruttura self-service tramite Developer Portal / CLI interne.
+
+**Deployment Platform**: Kubernetes è la runtime degli ambienti prod/pre-prod, gestito tramite [[technologies/gitops]] (ArgoCD, Flux) per la gestione dichiarativa dello stato.
+
 ## Connessioni
 
 - [[technologies/istio]] — service mesh per gestire le comunicazioni tra microservizi
 - [[concepts/twelve-factor]] — K8s implementa nativamente i principi twelve-factor
 - [[concepts/independent-deployability]] — K8s abilita il rolling deployment per zero-downtime release
+- [[concepts/microservices-platform]] — K8s è la base tecnologica della Infrastructure Services e Deployment Platform
+- [[technologies/gitops]] — GitOps gestisce lo stato Kubernetes in modo dichiarativo

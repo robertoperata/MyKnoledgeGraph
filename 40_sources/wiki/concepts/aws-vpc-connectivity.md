@@ -2,9 +2,14 @@
 title: AWS VPC Connectivity — Peering, Transit Gateway, Direct Connect, VPN, Endpoints
 type: concept
 tags: [thread3, aws]
-sources: [[courses/hands-on-with-aws-vpcs/knowledge]], [[courses/aws-security-deep-dive-vpcs/knowledge]]
+sources: 
+  - "[[courses/hands-on-with-aws-vpcs/knowledge]]"
+  - "[[courses/aws-security-deep-dive-vpcs/knowledge]]"
 updated: 2026-05-03
-related: [[concepts/aws-vpc-fundamentals]], [[concepts/aws-security-groups-nacls]], [[technologies/kubernetes]]
+related: 
+  - "[[concepts/aws-vpc-fundamentals]]"
+  - "[[concepts/aws-security-groups-nacls]]"
+  - "[[technologies/kubernetes]]"
 ---
 
 # AWS VPC Connectivity

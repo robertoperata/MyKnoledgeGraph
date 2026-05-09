@@ -7,7 +7,33 @@ durata_totale: 6h (Giorno 1 + Giorno 2 — corso completo)
 trascrizione_coperta: 6h su 6h (100%)
 lingua_originale: en
 iterazione: 3
-tags: [aws, vpc, networking, cloud, security-groups, network-acl, nat-gateway, subnets, vpc-peering, transit-gateway, load-balancer, vpc-endpoints, direct-connect, vpn, flow-logs, iac, cloudformation, terraform, direct-connect-gateway, vif, internal-elb, route53]
+tags:
+  - aws
+  - vpc
+  - networking
+  - cloud
+  - security-groups
+  - network-acl
+  - nat-gateway
+  - subnets
+  - vpc-peering
+  - transit-gateway
+  - load-balancer
+  - vpc-endpoints
+  - direct-connect
+  - vpn
+  - flow-logs
+  - iac
+  - cloudformation
+  - terraform
+  - direct-connect-gateway
+  - vif
+  - internal-elb
+  - route53
+feature: 
+type: live event
+author: Rick Crisci
+source: 
 ---
 
 # Hands-on with AWS VPCs — Corso Completo (Giorno 1 + Giorno 2)

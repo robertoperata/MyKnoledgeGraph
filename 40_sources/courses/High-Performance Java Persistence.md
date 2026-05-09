@@ -2,10 +2,10 @@
 tags:
   - persistence
   - hibernate
-feature:
-type:
+feature: 
+type: course
 author: "[[Vlad Mihalcea]]"
-source:
+source: 
 ---
 # High-Performance Java Persistence
 

@@ -2,8 +2,10 @@
 tags:
   - claude
   - genai
-feature:
-type:
+  - ai
+  - large-context
+feature: 
+type: live event
 author: "[[Tim Warner]]"
 source: https://learning.oreilly.com/live-events/claude-code-and-large-context-reasoning/0642572265359/
 ---

@@ -1,15 +1,20 @@
 ---
 title: Independent Deployability
 type: concept
-tags: [thread1-microservices]
+tags:
+  - thread1-microservices
 sources:
   - "[[Microservices Fundamental]]"
   - "[[Microservices Collaboration]]"
-updated: 2026-04-09
+  - "[[chris_richardson_cubes-hexagons-triangles-yow2019]]"
+  - "[[chris_richardson_microservices-platforms-part-6-build-platform]]"
+updated: 2026-05-07
 related:
   - "[[concepts/information-hiding]]"
   - "[[concepts/bounded-context]]"
   - "[[patterns/event-driven]]"
+  - "[[concepts/microservices-platform]]"
+  - "[[patterns/testing-pyramid]]"
 ---
 
 # Independent Deployability
@@ -45,9 +50,29 @@ L'independent deployability si ottiene attraverso:
 - L'information hiding ("hide information/behavior that changes behind a stable boundary") è il meccanismo principale per garantire backwards compatibility.
 - "You always have a schema — but is it explicit or implicit?" — rendere lo schema esplicito tramite OpenAPI permette di verificare la compatibilità automaticamente (openapi-diff).
 
+## Due tipi di coupling che minacciano l'independent deployability (Richardson, YOW! 2019)
+
+| Tipo | Problema | Soluzione |
+|---|---|---|
+| **Design-time coupling** | Cambio in Service A richiede cambio in Service B (incompatibilità API) | API piccole e stabili; no shared libraries con business logic; no condivisione di tabelle DB |
+| **Runtime coupling** | Service A non può completare una request senza che Service B sia disponibile | Messaggistica asincrona |
+
+**Anti-pattern**: servizi che wrappano uno schema database — API che riflette direttamente le tabelle. Questi servizi sono "all API, no implementation" e creano fortissimo design-time coupling (iceberg inverso).
+
+**Disponibilità cascante**: con N servizi in catena sincrona, la disponibilità complessiva è `A^N` — crolla rapidamente. Convertire i moduli del monolite in servizi che comunicano in modo sincrono produce un "distributed monolith" con tutti i problemi di entrambi.
+
+## Abilitatori infrastrutturali
+
+L'independent deployability richiede non solo l'architettura giusta ma anche infrastruttura di supporto:
+- **Build Platform**: ogni servizio ha il suo CI/CD pipeline autonomo
+- **Deployment Platform**: ambienti isolati, GitOps, rollback autonomo
+- **Testing pyramid**: contract testing per verificare la compatibilità senza deploy coordinati
+
 ## Connessioni
 
 - [[concepts/information-hiding]] — meccanismo principale per garantire l'independent deployability
 - [[concepts/bounded-context]] — le boundary del bounded context definiscono dove creare il confine del servizio
 - [[patterns/event-driven]] — la comunicazione event-driven è naturalmente più decoupled rispetto al request/response sincrono
 - [[concepts/twelve-factor]] — il principio 5 (Build/Release/Run) e il principio 4 (Stateless Processes) supportano la deployability
+- [[concepts/microservices-platform]] — la piattaforma è l'infrastruttura necessaria per realizzare l'independent deployability in pratica
+- [[patterns/testing-pyramid]] — la testing pyramid garantisce la confidenza nel deploy indipendente

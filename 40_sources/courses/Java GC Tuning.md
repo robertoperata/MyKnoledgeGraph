@@ -1,8 +1,11 @@
 ---
 tags:
   - java
-feature:
-type:
+  - gc
+  - performance
+  - jvm
+feature: 
+type: live event
 author: "[[Kirk Pepperdine]]"
 source: https://learning.oreilly.com/live-events/java-gc-tuning/0642572188467/
 ---

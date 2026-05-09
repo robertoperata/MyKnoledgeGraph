@@ -56,3 +56,6 @@ Il bounded context non coincide sempre con un singolo microservizio. Un bounded 
 - [[concepts/domain-event]] — il mezzo principale per comunicare tra bounded context
 - [[concepts/independent-deployability]] — la boundary del bounded context è dove si mette il confine del microservizio
 - [[concepts/information-hiding]] — il bounded context è il confine dello hiding
+- [[patterns/anti-corruption-layer]] — lo strumento tecnico che preserva l'integrità del bounded context quando si integra con contesti a semantiche diverse (sistemi legacy, sistemi esterni non controllabili)
+- [[concepts/sync-async-hybrid-architecture]] — rinforza il principio: "resist DRY inter-sistema" — se due sistemi hanno entrambi un concetto di `Customer`, è corretto avere rappresentazioni separate; i punti di sovrapposizione sono integration point, non difetti da eliminare
+- [[patterns/modular-monolith]] — applicazione concreta del DDD intra-applicazione: gli aggregate roots definiscono i confini dei moduli, che espongono solo la loro API pubblica e nascondono l'implementazione

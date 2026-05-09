@@ -7,7 +7,8 @@ sources:
   - "[[Java Threads Demystified]]"
   - "[[microservizi_pattern_summary]]"
   - "[[devoxx_modern-java-playful-way]]"
-updated: 2026-04-17
+  - "[[youtube_java-25-lts-features-jchampions]]"
+updated: 2026-05-08
 related:
   - "[[concepts/java-concurrency]]"
   - "[[concepts/completable-future]]"
@@ -50,24 +51,27 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 spring.threads.virtual.enabled: true
 ```
 
-## Pinning — il gotcha principale
+## Pinning — stato aggiornato (Java 24/25)
 
-Un virtual thread non può smontarsi dal carrier thread quando:
-- È dentro un blocco `synchronized`
-- Sta eseguendo un metodo native
+Un virtual thread non può smontarsi dal carrier thread in due casi:
 
-**Conseguenza**: il carrier thread si blocca, vanificando il vantaggio dei virtual thread.
+| Causa | Stato | Raccomandazione |
+|---|---|---|
+| `synchronized` block/method | ✅ **Risolto in Java 24** | Nessuna limitazione dal Java 24 |
+| Native method call (JNI) | ❌ Non risolvibile | Evitare chiamate native bloccanti nei virtual thread; probabilmente non sarà mai risolto |
 
-**Soluzione**: usare `ReentrantLock` invece di `synchronized` per sezioni critiche che contengono operazioni bloccanti.
+**Prima di Java 24**: era necessario sostituire `synchronized` con `ReentrantLock` nelle sezioni critiche che contenevano operazioni bloccanti. Dal Java 24 questa sostituzione non è più necessaria per il pinning — `synchronized` funziona correttamente con i virtual thread.
 
 ```java
-// DA EVITARE con virtual threads
-synchronized (this) { future.get(); }  // pinning!
+// Dal Java 24: synchronized funziona correttamente
+synchronized (this) { future.get(); }  // ✅ nessun pinning
 
-// PREFERIRE
+// Alternativa ancora valida (lock espliciti)
 lock.lock();
 try { future.get(); } finally { lock.unlock(); }
 ```
+
+> "Virtual threads are now quite reliable — synchronized pinning is fixed in Java 24." — Ario (JChampions Conference 2026)
 
 ## Connessione con Microservizi
 
@@ -98,3 +102,4 @@ results = queries.stream()
 - [[concepts/completable-future]] — usato insieme ai virtual thread nel pattern Request-Reply
 - [[concepts/structured-concurrency]] — la Structured Concurrency usa virtual thread per i subtask
 - [[patterns/request-reply-correlation-id]] — virtual thread abilitano alta concorrenza con codice sincrono semplice
+- [[concepts/scope-values]] — ScopeValue è il contesto immutabile propagato ai virtual thread; sostituzione di ThreadLocal

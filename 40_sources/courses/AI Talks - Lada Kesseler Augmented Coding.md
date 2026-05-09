@@ -1,8 +1,13 @@
 ---
-tags: 
+tags:
+  - ai
+  - genai
+  - claude
+  - coding
+  - augmented-coding
 feature: 
-type: 
-author: 
+type: talk
+author: Lada Kesseler
 source: 
 ---
 # AI Talks - Lada Kesseler Augmented Coding

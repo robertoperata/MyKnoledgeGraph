@@ -1,9 +1,13 @@
 ---
-tags: 
+tags:
+  - architecture
+  - cloud-native
+  - twelve-factor
+  - devops
 feature: 
-type: 
-author: 
-source: 
+type: article
+author: Adam Wiggins
+source: https://12factor.net
 ---
 # twelve-factor application
 

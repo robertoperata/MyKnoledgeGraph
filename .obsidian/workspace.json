@@ -95,16 +95,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "40_sources/courses/aws-security-deep-dive-vpcs/knowledge.md",
+                "file": "10_projects/Aidexa/24502-spid.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "knowledge"
+              "title": "24502-spid"
+            }
+          },
+          {
+            "id": "9b447488ed7b5392",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40_sources/articles/2-minute-streaming/2min_streaming_what-is-apache-kafka-and-how-does-it-work.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "2min_streaming_what-is-apache-kafka-and-how-does-it-work"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -136,7 +150,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "quota",
+                "query": "strangler",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -161,7 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 386.5
+    "width": 530.5
   },
   "right": {
     "id": "548a9e2fe08ad946",
@@ -275,11 +289,12 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 368.5
+    "width": 368.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -297,53 +312,53 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "e0ac1950fcb22f76",
+  "active": "9b447488ed7b5392",
   "lastOpenFiles": [
-    "40_sources/articles/infoq/infoq_state-of-play-ai-coding-assistants.md",
-    "40_sources/articles/infoq/infoq_directing-a-swarm-of-agents-fun-and-profit.md",
-    "40_sources/articles/infoq/infoq_context-engineering-with-adi-polak.md",
-    "40_sources/articles/infoq/infoq_cncf-kubernetes-not-enough-secure-llm-workloads.md",
-    "40_sources/articles/infoq/infoq_cloudflare-code-mode-mcp-server.md",
-    "40_sources/articles/infoq/infoq_architecting-autonomy-at-scale.md",
-    "40_sources/articles/infoq/infoq_anthropic-agent-based-code-review-claude-code.md",
-    "40_sources/articles/infoq/2026-04-25-report.md",
-    "40_sources/articles/infoq",
-    "40_sources/articles/dear-architects/dear_architects_when-ai-becomes-your-on-call-teammate-wix-airbot.md",
-    "40_sources/articles/dear-architects/dear_architects_thoughtworks-technology-radar-vol-34.md",
-    "40_sources/articles/dear-architects/dear_architects_structured-prompt-driven-development.md",
-    "40_sources/articles/dear-architects/dear_architects_modularity-skills-balanced-coupling.md",
-    "40_sources/articles/dear-architects/dear_architects_lessons-from-the-rise-and-fall-of-ebay-velocity.md",
-    "40_sources/articles/dear-architects/dear_architects_learning-from-3000-incidents.md",
-    "40_sources/articles/dear-architects/dear_architects_infoq-certified-architect-program.md",
-    "40_sources/articles/dear-architects/dear_architects_generative-ai-on-kubernetes.md",
-    "40_sources/articles/dear-architects/dear_architects_frameworks-for-reinventing-software.md",
-    "40_sources/articles/dear-architects/dear_architects_end-security-speed-tradeoff-access-arch.md",
-    "40_sources/articles/dear-architects/dear_architects_background-agent-virtual-summit.md",
-    "40_sources/articles/dear-architects",
-    "40_sources/articles/chris-richardson/chris_richardson_microservices-platforms-part-7-deployment-platform.md",
-    "40_sources/articles/chris-richardson",
-    "40_sources/articles/2-minute-streaming/2min_streaming_what-is-apache-kafka-and-how-does-it-work.md",
-    "40_sources/articles/2-minute-streaming",
-    "40_sources/wiki/concepts/aws-ddos-protection.md",
+    "40_sources/articles/2-minute-streaming/2min_streaming_whats-a-lakestream.md",
+    "40_sources/wiki/concepts/completable-future.md",
+    "40_sources/wiki/concepts/bounded-context.md",
+    "40_sources/wiki/concepts/aws-vpc-fundamentals.md",
     "40_sources/wiki/concepts/aws-vpc-connectivity.md",
     "40_sources/wiki/concepts/aws-security-groups-nacls.md",
-    "40_sources/wiki/concepts/aws-vpc-fundamentals.md",
-    "00_inbox/weekly/Week 12.md",
-    "00_inbox/weekly",
-    "00_inbox",
-    "40_sources/courses/aws-security-deep-dive-vpcs",
-    "Credit Line Counteroffer-2026-04-24-092228.svg",
-    "Logical Onboarding Process-2026-04-23-094811.svg",
-    "Pasted image 20260423171815.png",
-    "Pasted image 20260423110318.png",
-    "BPM Funding Proposal-2026-04-21-094010.svg",
-    "80_sport/norwegian-method",
-    "adriana-chechik-making-her-dip.mp4",
-    "adriana-chechik-wifey-wants.mp4",
-    "tempo/_- visual selection.svg",
-    "tempo/Untitled diagram-2026-04-09-104348.svg",
-    "tempo/Screenshot 2025-09-22 at 11.37.37.png",
-    "tempo/Pasted image 20260417094946.png",
-    "tempo/Pasted image 20260417094845.png"
+    "40_sources/wiki/concepts/aws-ddos-protection.md",
+    "40_sources/wiki/concepts/autonomous-systems-architecture.md",
+    "40_sources/wiki/concepts/async-workflow-patterns.md",
+    "40_sources/wiki/concepts/architectural-governance.md",
+    "40_sources/wiki/concepts/aggregate.md",
+    "40_sources/wiki/concepts/agentic-patterns.md",
+    "40_sources/courses/aws-certified-solutions-architect-associate-saa-c03/knowledge.md",
+    "40_sources/courses/hands-on-with-aws-vpcs/knowledge.md",
+    "40_sources/articles/getkafkanated_kip-881-kip-392-inter-az-kafka-costs.md",
+    "40_sources/wiki/concepts/spring-transactional.md",
+    "40_sources/articles/spring_transactional-declarative-annotations.md",
+    "40_sources/wiki/concepts/deep-modules.md",
+    "40_sources/articles/youtube_ai-coding-workflow-matt-pocock.md",
+    "40_sources/wiki/concepts/jpa-hibernate-performance.md",
+    "40_sources/articles/youtube_spring-data-jpa-hibernate-performance-walkowiak.md",
+    "40_sources/articles/youtube_domain-centric-wrong-question-hexagonal-onion.md",
+    "40_sources/wiki/concepts/scope-values.md",
+    "40_sources/articles/youtube_java-25-lts-features-jchampions.md",
+    "40_sources/articles/youtube_kiro-spec-driven-development-al-harris.md",
+    "40_sources/articles/martinfowler_sdd-tools-kiro-spec-kit-tessl.md",
+    "40_sources/courses/courses.csv",
+    "40_sources/articles/articles.csv",
+    "40_sources/articles/vlingo_xoom-docs_images/reactive-value-form-means.png",
+    "40_sources/articles/vlingo_xoom-docs_images/xoom-ddd-eventstorming.png",
+    "40_sources/articles/vlingo_xoom-docs_images/xoom-ecosystem.png",
+    "40_sources/articles/vlingo_xoom-docs_images/xoom-components-layers.png",
+    "40_sources/articles/vlingo_xoom-docs_images/eventstorming-to-microservices.png",
+    "40_sources/articles/vlingo_xoom-docs_images",
+    "40_sources/articles/martinfowler_domain-oriented-observability_images/event-based-diagram-2-decoupled.png",
+    "40_sources/articles/martinfowler_domain-oriented-observability_images/event-based-diagram-1-direct-probe.png",
+    "40_sources/articles/martinfowler_domain-oriented-observability_images",
+    "40_sources/articles/kalele_xoom-reactive-platform_images/actors-async.png",
+    "40_sources/articles/kalele_xoom-reactive-platform_images/objects-blocking.png",
+    "40_sources/articles/kalele_xoom-reactive-platform_images",
+    "40_sources/articles/kalele_architecture-vs-model_images/andreas-grimm-quote.png",
+    "40_sources/articles/kalele_architecture-vs-model_images",
+    "40_sources/courses/aws-certified-solutions-architect-associate-saa-c03",
+    "40_sources/articles/infoq",
+    "40_sources/articles/dear-architects",
+    "40_sources/articles/chris-richardson"
   ]
 }
